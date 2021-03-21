@@ -1,0 +1,633 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+xpoints = np.array([1,8])
+ypoints = np.array([3,10])
+
+plt.plot(xpoints,ypoints,'o')   
+plt.show()
+
+#Birden fazla bağlantılı grafik
+
+"Burada dikkat etmemiz gereken nokta şu sadece iki verilen dizinin değerleri birbirine eşit sayıda olmalı"
+
+xp = np.array([1,2,6,8])
+yp = np.array([3,8,1,10])
+
+plt.plot(xp,yp)
+plt.show()
+
+#Varsayılan X Noktaları
+
+"eğer x kısmının noktalarını belirtmezsek sadece y değerlerini verirsek uzunluğa bağlı olarak varsayılan değer ataması yapar"
+"yani bu da 0 1 2 3 değerlerini atar direk."
+
+yp = np.array([3, 8, 1, 10, 5, 7])
+
+plt.plot(yp)
+plt.show()
+
+#Matplotlib İşaretçileri 
+
+"işaretçiler her bir noktayı ekstra göstermek istersek marker parametresini kullanırız."
+
+yp = np.array([3, 8, 1, 10, 5, 7])
+plt.plot(yp,marker = "o") #eğer yıldız ile göstermek isterse * işareti koyarız
+plt.show()
+
+#Dizileri Biçimlendirme fmt
+
+"işaretçiyi belirtmek için kısayol dizisini gösterimini fmt parametresini kullanırız"
+"genel kullanım şekli şu şekildedir marker|line|color"
+"örneğin şu şekilde ekstra parametre yazmak yerine sırayla direk değer yazarsak bunu yapmış oluruz."
+
+yp = np.array([3, 8, 1, 10, 5, 7])
+plt.plot(yp,"o:r")
+plt.show()
+
+#Marker Boyutu
+
+"işaretçilerin boyutunu ayarlamak için anahtar kelime bağımsız değişkenini markersize ile belirleriz veya kısaltması olan ms."
+
+yp = np.array([3, 8, 1, 10, 5, 7])
+plt.plot(yp,marker="o",ms="10")
+plt.show()
+
+#Marker Rengi
+
+"İşaretçilerin kenarının rengini ayarlamak için anahtar kelime bağımsız değişken markeredgecolor parametresini kullanırız."
+"veya kısaltması olan mec ismini kullanırız."
+
+yp = np.array([3, 8, 1, 10, 5, 7])
+plt.plot(yp,marker="o",ms=10,mec="r")
+plt.show()
+
+"İşaretçilerin içersinde ki dolguların rengini ayarlamak istersek eğer markerfacecolor veya mfc olanı kullanırız."
+
+yp = np.array([3, 8, 1, 10, 5, 7])
+plt.plot(yp,marker="o",ms=10,mfc="r")
+plt.show()
+
+#Linestyle
+
+"Çizilen çizginin stilini değiştirmek için anahtar kelime bağımsız bir değişkeni linestyle veya ls ile kullanırız."
+
+yp = np.array([3, 8, 1, 10, 5, 7])
+plt.plot(yp,marker = "o",ms=10,mfc="r",ls="dotted")#burada noktalı olmasını söyledik
+#kesikli çizgi = dashed(--) ,noktalı = dotted(:), dashdot = (-.) bunlar diğer seçenekler ver kısa yollarıdır.
+plt.show()
+
+#Çizginin rengi
+
+"Satırın rengini ayarlamak için anahtar kelime color kullanabiliriz kısaltması c kullanabiliriz."
+
+yp = np.array([3, 8, 1, 10, 5, 7])
+plt.plot(yp,color = "r")
+plt.show()
+
+#Hat genişliğini ayarlamak
+
+"çizgilerin genişliğini ayarlamak için linewidth veya kısaltması lw kullanabiliriz."
+"verdiğimiz değer float türünde olmadılır."
+
+yp = np.array([3, 8, 1, 10, 5, 7])
+plt.plot(yp,lw=5.5)
+plt.show()
+
+#Çoklu grafikler
+
+"Daha fazla plt.plot() fonksiyonu eklersek eğer istediğimiz kadar grafiğimize çizgiler ekleriz."
+
+y1 = np.array([3, 8, 1, 10])
+y2 = np.array([6, 2, 7, 11])
+plt.plot(y1)
+plt.plot(y2)
+plt.show()
+
+#Etiketleri ve Başlıkları
+
+"Pyplot ile x ve y eksenleri için bir etiket ayarlamak için xlabel() ve ylabel() fonksiyonlarını kullanırız."
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.plot(x, y)
+
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.show()
+
+#Bir başlık oluşturma
+
+"Pyplot ile çizdiğimiz grafiğin başlığını belirlemek için title() fonksiyonunu kullanırız."
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.plot(x, y)
+
+plt.title("Sports Watch Data")
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.show()
+
+#Başlık ve Etiketler için başlık tipi özelliğini ayarlamak
+
+"Yazı tiplerini ayarlamak için fontdict parametresini kullanırız."
+"title xlabel ylabel fonksiyonları içerisinde bu parametresi ekleyebiliriz."
+"öncelikle bizim ayarlarımızı yazmamız gerekir."
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+font1 = {'family':'serif','color':'blue','size':20}
+font2 = {'family':'serif','color':'darkred','size':15}
+
+plt.title("Sports Watch Data", fontdict = font1)
+plt.xlabel("Average Pulse", fontdict = font2)
+plt.ylabel("Calorie Burnage", fontdict = font2)
+
+plt.plot(x, y)
+plt.show()
+
+#Başlığı konumlandırma
+"Başlığın konumunu belirtmek için loc parametresini title() fonksiyonu içinde kullanırız."
+"alabileceği değerler left right center varsayılan değer center ayarlıdır."
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.title("Sports Watch Data", loc = 'left')
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.plot(x, y)
+plt.show()
+"""
+"""
+#Grafiğin arkasına ızgara çizgileri ekleme.
+
+"Pyplot ile grafiğin arkasına ızgara çizgileri eklemek için grid() fonksiyonunu kullanırız."
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.title("Sports Watch Data")
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.plot(x, y)
+
+plt.grid()
+
+plt.show()
+
+#Hangi Tür çizgilerin eklemesini yapmak
+
+"Hangi tür ızgara görüntüleneceğini seçmek için grid() fonksiyonu içersinde axis parametresini kullanırız."
+"alabileceği değerler 'x','y','both' default= 'both' "
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.title("Sports Watch Data")
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.plot(x, y)
+
+plt.grid(axis = 'x')
+
+plt.show() 
+
+#Izgara çizgilerinin özelliklerini ayarlama
+
+"Ayrıca ızgaranın çizgi özelliklerini şu şekilde ayarlayabiliriz."
+"grid (color = ' color ', linestyle = ' linestyle ', linewidth = number )."
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.title("Sports Watch Data")
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.plot(x, y)
+
+plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
+
+plt.show()
+
+#Birden Fazla Grafik Yansıtma
+
+"subplots() fonksiyonu ile birden fazla grafik ekrana çizebiliriz."
+
+#çizim 1
+x = np.array([0,1,2,3])
+y = np.array([3,8,1,10])
+
+plt.subplot(1,2,1)
+plt.plot(x,y)
+#çizim 2
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(1,2,2)
+plt.plot(x,y)
+plt.show()
+
+"subplots() fonksiyonu şekil düzenini açıklar aslında ve 3 tane argüman alır."
+"Düzen, birinci ve ikinci bağımsız değişken tarafından temsil edilen satırlar ve sütünlar halinde düzenlenmiştir."
+"üçüncü argüman, mevcut grafiğin indeksini temsil eder."
+
+#çizim 1
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(2, 1, 1)
+plt.plot(x,y)
+
+#çizin 2
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(2, 1, 2)
+plt.plot(x,y)
+
+plt.show()
+
+#6 tane altgrafik çizim örneği;
+
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(2, 3, 1)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(2, 3, 2)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(2, 3, 3)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(2, 3, 4)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(2, 3, 5)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(2, 3, 6)
+plt.plot(x,y)
+
+plt.show()
+
+#Başlık 
+"Her bir grafiğe title() fonksiyonu ile başlık ekleyebiliriz."
+#çizim 1
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(1, 2, 1)
+plt.plot(x,y)
+plt.title("SALES")
+
+#çizim 2
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(1, 2, 2)
+plt.plot(x,y)
+plt.title("INCOME")
+
+plt.show()
+
+#Süper Başlık
+
+"suptitle() ile bütün altgrafiklerin tüm başlığı şeklinde bir belirtme yapabiliriz."
+
+#çizim 1:
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(1, 2, 1)
+plt.plot(x,y)
+plt.title("SALES")
+
+#çizim 2:
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(1, 2, 2)
+plt.plot(x,y)
+plt.title("INCOME")
+
+plt.suptitle("MY SHOP")
+plt.show()
+
+#Dağılım grafiklerini oluşturma 
+
+"Pyplot ile scatter() işlevi bir dağılım grafiği çizmek için kullanabiliriz."
+"scatter fonksiyon çizimleri birer gözlem için nokta. biri x eksenini değerlerini diğeri y olmak üzere iki eşit diziye ihtiyac duyar."
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+
+plt.scatter(x, y)
+plt.show()
+
+"""Yukarıdaki örnekteki gözlem, geçen 13 arabanın sonucudur.
+
+X ekseni arabanın kaç yaşında olduğunu gösterir.
+
+Y ekseni, arabanın geçerken hızını gösterir.
+
+Gözlemler arasında herhangi bir ilişki var mı?
+
+Görünüşe göre araba ne kadar yeniyse, o kadar hızlı sürüyor, ancak bu bir tesadüf olabilir, sonuçta sadece 13 araba kaydettik.
+"""
+#Grafikleri Karşılaştırma
+
+#day one, the age and speed of 13 cars:
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+plt.scatter(x, y)
+
+#day two, the age and speed of 15 cars:
+x = np.array([2,2,8,1,15,8,12,9,7,3,11,4,7,14,12])
+y = np.array([100,105,84,105,90,99,90,95,94,100,79,112,91,80,85])
+plt.scatter(x, y)
+
+plt.show()
+
+#NOT!! iki grafik karşılaştırması yapılırken otomatik olarak mavi ve turuncu renkler seçili olur.
+
+#Renkler
+
+"Grafiklerin tasarımını yaparken renklerini ayarlamayı öğrendik iki farklı grafilerde de aynı color veya c kısaltmasını kullanabiliriz."
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+plt.scatter(x, y, color = 'hotpink')
+
+x = np.array([2,2,8,1,15,8,12,9,7,3,11,4,7,14,12])
+y = np.array([100,105,84,105,90,99,90,95,94,100,79,112,91,80,85])
+plt.scatter(x, y, color = '#88c999')
+
+plt.show()
+
+#Her noktayı farklı renklendirme
+
+"Bağımsız olarak her noktayı renklendirmek için colors adında farklı bir dizi oluşturup ona göre entegre edebiliriz değerlerimize"
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+colors = np.array(["red","green","blue","yellow","pink","black","orange","purple","beige","brown","gray","cyan","magenta"])
+
+plt.scatter(x, y, c=colors)
+
+plt.show()
+
+#COLORMAP
+
+"Matplotlib modulünün bir dizi mevcut haritası vardır."
+"Renk haritası 0 ile 100 arasında değişen değerleri vardır o değerler arasında sıralanır."
+"Bu renk haritasına viridir adı verilir"
+
+#COLORMAP Kullanımı
+
+"renk haritasını, cmap fonksiyonu ile çağırabiliriz "
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+colors = np.array([0, 10, 20, 30, 40, 45, 50, 55, 60, 70, 80, 90, 100])
+
+plt.scatter(x, y, c=colors, cmap='viridis')
+
+plt.show()
+
+"plt.colorbar() fonksiyonunu kullnarak grafiğinizin yanına bu barı ekleyebilir ve görebilirsiniz"
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+colors = np.array([0, 10, 20, 30, 40, 45, 50, 55, 60, 70, 80, 90, 100])
+
+plt.scatter(x, y, c=colors, cmap='viridis')
+
+plt.colorbar()
+
+plt.show()
+
+#Boyut
+
+"Bağımsız olarak s parametresi ile bir dizi oluşturup o noktaların boyutlarını değiştirebilirsiniz."
+"Renkler gibi x ve y ekseni dizileri ile aynı uzunlukta olduğuna emin olun."
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+sizes = np.array([20,50,100,200,500,1000,60,90,10,300,600,800,75])
+
+plt.scatter(x, y, s=sizes)
+
+plt.show()
+
+#Alfa 
+
+"alpha argümanı ile noktaların şeffaflığını ayarlayabiliriz."
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+sizes = np.array([20,50,100,200,500,1000,60,90,10,300,600,800,75])
+
+plt.scatter(x, y, s=sizes, alpha=0.5)
+
+plt.show()
+
+#Renk boyutu ve alfayı birleştirerek kullanmak
+
+"Bir renk haritasında noktalar üzerinde farklı boyutlarla birleştirebiliriz.Bu noktalar şeffaf ise en iyi şekilde görünür."
+
+x = np.random.randint(100, size=(100))
+y = np.random.randint(100, size=(100))
+colors = np.random.randint(100, size=(100))
+sizes = 10 * np.random.randint(100, size=(100))
+
+plt.scatter(x, y, c=colors, s=sizes, alpha=0.5, cmap='nipy_spectral')
+
+plt.colorbar()
+
+plt.show()
+
+#Matplotlib Bar oluşturma
+
+"Pyplot ile bar() işlevi çubuk grafikleri çizmek için kullanılır."
+
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+
+plt.bar(x,y)
+plt.show()
+
+#Yatay çubuklar
+
+"eğer çubukların dikey değil yatay olarak çıkarılmasını istersek barh() fonksiyonunu kullanırız."
+
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+
+plt.barh(x, y)
+plt.show()
+
+#Bar renklerini ayarlama
+
+"bar() ve barh() anahtar kelime argüman alır var color argümanı ile renkleri ayarlarız."
+
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+
+plt.bar(x, y, color = "red")
+plt.show()
+
+#Bar genişliği ayarlama
+
+"bar() fonksiyonu width argümanı ile genişliğini ayarlayabiliriz."
+
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+
+plt.bar(x, y, width = 0.1)
+plt.show()
+
+#NOT!! Yatay çubuklar için width yerine height kullanırız.
+
+#Çubuk Yüksekliği
+
+"barh() fonksiyonu height argümanı alır çubukların yükseklğini ayarlamak için."
+
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+
+plt.barh(x, y, height = 0.1)
+plt.show()
+
+#HİSTOGRAMLAR
+
+"HİSTOGRAM, frekans dağılımlarını gösteren bir grafiktlr."
+"her bir aralıkta gözlemlerin sayısını gösteren bir grafiktir."
+
+#Histogram oluşturma
+
+"Matplotlib'de hist() fonksiyonu ile histogramları oluşturmak için kullanırız."
+"hist() bir histogram oluşturma sayı dizisi kullanır fonksiyonu,dizi bağımsız değişken olarak işlev gönderir."
+
+x = np.random.normal(170, 10, 250)
+
+plt.hist(x)
+plt.show()
+
+#Matplotlib Pasta Grafikleri
+
+"Pyplot ile pie() pasta grafikleri çizmek için işlevi kullanabiliriz."
+
+y = np.array([35, 25, 25, 15])
+
+plt.pie(y)
+plt.show() 
+
+#Etiketler
+
+"Pasta grafiğe label parametresiyle etiketleri ekleriz."
+"label parametresinin her kaması için bir etiketi olan bir dizi olmalıdır."
+
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+
+plt.pie(y, labels = mylabels)
+plt.show() 
+
+#Başlama açısı
+
+"Belirdildiği gibi, varsayılan başlangıç açısı x eksenindedir, ancak bir startangle parametre belirleyerek başlangıç açısını değiştirebilirsiniz."
+"startangle parametresi ile bir derece tanımlanır ve oradan başlar."
+
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+
+plt.pie(y, labels = mylabels, startangle = 90)
+plt.show() 
+
+#Ayırma
+
+"Eğer grafikten bir parçayı ayırmak ve öne çıkarmak istersek explode parametresini kullanırız."
+"explode parametre belirtilen ve değilse None değer alır. her bir değer için ona uygun dizi olması gerekir."
+"Her değer merkezden ne kadar uzak olucağını gösterir."
+
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+myexplode = [0.2, 0, 0, 0]
+
+plt.pie(y, labels = mylabels, explode = myexplode)
+plt.show() 
+
+#Gölge
+
+"shadows parametreyi şu şekilde ayarlayarak pasta grafiğinin arkasına gölge ekler True değerini alırsa"
+
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+myexplode = [0.2, 0, 0, 0]
+
+plt.pie(y, labels = mylabels, explode = myexplode, shadow = True)
+plt.show() 
+
+#Renkler
+
+"Colors parametresi ile her bir parçanın renklerini değiştirebiliriz."
+"her bir değere uygun bir dizi olması gerekir."
+
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+mycolors = ["black", "hotpink", "b", "#4CAF50"]
+
+plt.pie(y, labels = mylabels, colors = mycolors)
+plt.show() 
+
+#Legend fonksiyonu
+
+"Her bir parça için açıklama listesi eklemek için legend() fonksiyonunu kullanırız."
+
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+
+plt.pie(y, labels = mylabels)
+plt.legend()
+plt.show() 
+
+#Başlık
+
+"Grafiğe bir başlık eklemek istersek eğer legend() fonksiyonu title adında bir parametre alır ve onu kullanırız."
+
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+
+plt.pie(y, labels = mylabels)
+plt.legend(title = "Four Fruits:")
+plt.show()
+
+
